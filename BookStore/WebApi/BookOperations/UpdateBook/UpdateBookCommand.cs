@@ -6,15 +6,15 @@ namespace WebApi.BookOperations.UpdateBook
 {
     public class UpdateBookCommand{
 
-    public UpdateBookModel UpdateModel {get;set;}
-    private readonly BookStoreDbContext _dbContext;
-
+        public UpdateBookModel UpdateModel {get;set;}
+        private readonly BookStoreDbContext _dbContext;
+        public int bookId;
         public UpdateBookCommand(BookStoreDbContext context){
             _dbContext=context;
         }
 
-        public void Handle(int id){
-                 var book=_dbContext.Books.SingleOrDefault(x=>x.Id==id);
+        public void Handle(){
+                 var book=_dbContext.Books.SingleOrDefault(x=>x.Id==bookId);
 
                  
              if(book==null){
